@@ -1,11 +1,12 @@
 package it.itismeucci;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main {
-    public static void main(String[] args) {
-          ServerSocket ss2 = new ServerSocket(5672);
+    public static void main(String[] args) throws IOException {
+          ServerSocket ss2 = new ServerSocket(5670);
         do{
           Socket s = ss2.accept();
           MyThread t = new MyThread(s);

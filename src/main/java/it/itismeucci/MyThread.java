@@ -22,31 +22,42 @@ public class MyThread extends Thread{
             DataOutputStream out = new DataOutputStream(s.getOutputStream());
     
             String stringaRicevuta;
-            int scelta;
+            String scelta;
     
             do{
             
-           scelta = in.read();
+           scelta = in.readLine();
             stringaRicevuta = in.readLine();
 
             switch(scelta){
-                case 1:
+                case "1":
                   String stringaMaiuscola = stringaRicevuta.toUpperCase();
                   out.writeBytes(stringaMaiuscola + "\n");
                   break;
                 
-                case 2:
+                case "2":
                    String stringaMinuscola = stringaRicevuta.toLowerCase();
                    out.writeBytes(stringaMinuscola + "\n");
+                   break;
+                
+                case "3":
+                StringBuilder s = new StringBuilder(stringaRicevuta);
+                s = s.reverse();
+                out.writeBytes(s + "\n");
+                break;
 
+                case "4":
+                int caratteri = stringaRicevuta.length();
+                out.writeBytes(caratteri + "\n");
+                break;
+
+                case "5":
+                out.writeBytes("esecuzione finita!!!");
 
             }
-            
+
     
-            String stringaMaiuscola = stringaRicevuta.toUpperCase();
-            out.writeBytes(stringaMaiuscola + "\n");
-    
-            }while(!stringaRicevuta.equals("!"));
+            }while(!scelta.equals("5"));
     
             s.close();
 
